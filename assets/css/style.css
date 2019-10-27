@@ -1,0 +1,35 @@
+body {
+    background-color: lightslategray;
+    padding: 0px 50px;
+}
+
+#container {
+    text-align: center;
+}
+
+#header {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-style: bold;
+    font-size: 30px;
+}
+
+.animal {
+    font-family: 'Sintony', sans-serif;
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+#animal-form {
+    font-family: 'Sintony', sans-serif;
+    padding: 10px;
+}
+
+
+
+/* 
+font-family: 'Amatic SC', cursive;
+font-family: 'Fredoka One', cursive;
+font-family: 'Julius Sans One', sans-serif;
+font-family: 'Sintony', sans-serif; */
