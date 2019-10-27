@@ -69,22 +69,22 @@ function displayAnimals() {
 
             // display gifDiv above previous 
             $("#gif-display").prepend(gifDiv);
-
-            // make gifs change from still image to animated when clicked
-            $(".gif").on("click", function () {
-                var state = $(this).attr("data-state");
-                if (state == "still") {
-                    $(this).attr("src", $(this).attr("data-animate"));
-                    $(this).attr("data-state", "animate");
-                } else if (state == "animate") {
-                    $(this).attr("src", $(this).attr("data-still"));
-                    $(this).attr("data-state", "still");
-                }
-            });
-
         }
     })
 }
+
+// make gifs change from still image to animated when clicked
+$(document).on("click", ".gif", function(){
+    var state = $(this).attr("data-state");
+    if (state == "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else if (state == "animate") {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+})
+
 
 
 // display buttons
@@ -115,7 +115,7 @@ $(document).on("click", ".animal", displayAnimals);
 renderButtons();
 
 
-{/* <img src="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" class="gif" data-still="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="still"></img>
+// <img src="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" class="gif" data-still="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="still"></img>
 
 
-<img src="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" class="gif" data-still="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="animate"></img> */}
+// <img src="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" class="gif" data-still="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="animate"></img>
