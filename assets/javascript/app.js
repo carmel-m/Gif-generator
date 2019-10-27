@@ -19,15 +19,14 @@
 // important GIPHY parameters
 // 'q' (search query term), 'limit' (max number of records to return), 'rating' (filter results by rating)
 
-
 // GIPHY API key = qAE3KGzdAFsmPr0NI3dcRyj3Cuzim6Xs
-
 
 
 // VARIABLES ============================================================
 
-var animalsArray = ["kangaroo", "wombat", "cockatoo", "emu", "snake", "koala", "shark", "echidna", "platypus", "spider", "quokka", "quoll", "dingo", "wallaby", "crocodile"]
+var animalsArray = ["wombat", "cockatoo", "emu", "snake", "shark", "echidna", "platypus", "spider", "quokka", "quoll", "dingo", "wallaby"]
 
+// "kangaroo", "koala", "crocodile"
 
 
 // FUNCTIONS ============================================================
@@ -42,14 +41,13 @@ function displayAnimals() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(queryURL);
-        console.log(response);
+        // console.log(queryURL);
+        // console.log(response);
 
         for (var i = 0; i < animalsArray.length; i++) {
 
-
             // create new div to display gifs/ratings
-            var gifDiv = $("<div>");
+            var gifDiv = $("<div>", {id: "inline"});
 
             // get and display rating
             var rating = response.data[i].rating;
@@ -65,7 +63,6 @@ function displayAnimals() {
             $("#gif-display").prepend(gifDiv);
         }
     })
-
 }
 
 // display buttons
@@ -73,7 +70,6 @@ function renderButtons() {
 
     $("#buttons-display").empty();
     for (var i = 0; i < animalsArray.length; i++) {
-
         var button = $("<button>");
         button.addClass("animal");
         button.attr("data-name", animalsArray[i]);
@@ -87,7 +83,6 @@ $("#add-animal").on("click", function (event) {
     event.preventDefault();
     var newAnimal = $("#animal-input").val().trim();
     animalsArray.push(newAnimal);
-
     renderButtons();
 })
 
