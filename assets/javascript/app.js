@@ -47,23 +47,45 @@ function displayAnimals() {
         for (var i = 0; i < animalsArray.length; i++) {
 
             // create new div to display gifs/ratings
-            var gifDiv = $("<div>", {id: "inline"});
+            var gifDiv = $("<div>", { id: "inline" });
 
             // get and display rating
             var rating = response.data[i].rating;
             var ratingDisplay = $("<p>").text("Rating: " + rating);
             gifDiv.append(ratingDisplay);
 
-            // get and display gif image
+            // get and assign var to gif image
             var image = response.data[i].images.fixed_height_still.url;
             var imageDisplay = $("<img src='" + image + "'/>");
+
+            // add classes and data attributes, set data-state to "still"
+            imageDisplay.addClass("gif");
+            imageDisplay.attr("data-still", response.data[i].images.fixed_height_still.url)
+            imageDisplay.attr("data-animate", response.data[i].images.fixed_height.url);
+            imageDisplay.attr("data-state", "still");
+
+            // add image to gifDiv
             gifDiv.append(imageDisplay);
 
             // display gifDiv above previous 
             $("#gif-display").prepend(gifDiv);
+
+            // make gifs change from still image to animated when clicked
+            $(".gif").on("click", function () {
+                var state = $(this).attr("data-state");
+                if (state == "still") {
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate");
+                } else if (state == "animate") {
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
+                }
+            });
+
         }
     })
 }
+
 
 // display buttons
 function renderButtons() {
@@ -91,3 +113,9 @@ $(document).on("click", ".animal", displayAnimals);
 
 // displays buttons
 renderButtons();
+
+
+{/* <img src="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" class="gif" data-still="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media0.giphy.com/media/Xev2JdopBxGj1LuGvt/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="still"></img>
+
+
+<img src="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" class="gif" data-still="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200_s.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200_s.gif" data-animate="https://media2.giphy.com/media/B2HqyXi7r6j9W9cCG2/200.gif?cid=1f1b8728a09445a53e29bc0de9999098db1a479a78869326&amp;rid=200.gif" data-state="animate"></img> */}
