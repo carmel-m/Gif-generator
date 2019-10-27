@@ -44,7 +44,7 @@ function displayAnimals() {
         // console.log(queryURL);
         // console.log(response);
 
-        for (var i = 0; i < animalsArray.length; i++) {
+        for (var i = 0; i < response.data.length; i++) {
 
             // create new div to display gifs/ratings
             var gifDiv = $("<div>", { id: "inline" });
@@ -74,7 +74,7 @@ function displayAnimals() {
 }
 
 // make gifs change from still image to animated when clicked
-$(document).on("click", ".gif", function(){
+$(document).on("click", ".gif", function () {
     var state = $(this).attr("data-state");
     if (state == "still") {
         $(this).attr("src", $(this).attr("data-animate"));
